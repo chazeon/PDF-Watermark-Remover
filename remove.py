@@ -1,5 +1,4 @@
 from PyPDF2 import PdfFileReader, PdfFileWriter
-from PyPDF2.pdf import ContentStream
 
 def removeWatermark(input_fname: str, output_fname: str):
 
