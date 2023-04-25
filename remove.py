@@ -1,20 +1,20 @@
-from PyPDF2 import PdfFileReader, PdfFileWriter
+from PyPDF2 import PdfReader, PdfWriter
 
 def removeWatermark(input_fname: str, output_fname: str):
 
-    with open(input_fname, "rb") as inputFile, open(output_fname, "wb") as outputFile:
+    with open(input_fname, "rb") as input_file, open(output_fname, "wb") as output_file:
 
-        reader = PdfFileReader(inputFile)
-        writer = PdfFileWriter()
+        reader = PdfReader(input_file)
+        writer = PdfWriter()
 
-        for n in range(reader.numPages):
+        for n in range(len(reader.pages)):
 
-            page = reader.getPage(n)
+            page = reader.pages[n]
             del page["/Contents"][-1]
 
-            writer.addPage(page)
+            writer.add_page(page)
 
-        writer.write(outputFile)
+        writer.write(output_file)
 
 if __name__ == "__main__":
 
