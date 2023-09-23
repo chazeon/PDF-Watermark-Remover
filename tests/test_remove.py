@@ -1,13 +1,13 @@
 import pytest
-import importlib  
 import sys
 from pathlib import Path
 
 TESTS_DIR = Path(__file__).parent
 
+sys.path.insert(0, str(TESTS_DIR.parent))
+
 from remove import removeWatermark
 
-sys.path.insert(0, str(TESTS_DIR.parent))
 
 @pytest.mark.parametrize("ifname", [TESTS_DIR / "lorem.pdf"])
 def test_removal(ifname):
